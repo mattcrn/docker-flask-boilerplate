@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    my-service:
+        build: .
+        container_name: my-container
+        restart: always
+        environment:
+            VIRTUAL_HOST: my-app.local
+        ports:
+            - "5000"
+        volumes:
+            - './app:/app'
+        networks:
+            - docker-nginx-proxy_default
+networks:
+    docker-nginx-proxy_default:
+        external: true
